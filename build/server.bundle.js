@@ -100,42 +100,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/common/actions/countries.js":
-/*!*****************************************!*\
-  !*** ./src/common/actions/countries.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _requestThunk = __webpack_require__(/*! Reducers/requestThunk */ \"./src/common/reducers/requestThunk.js\");\n\nvar _requestThunk2 = _interopRequireDefault(_requestThunk);\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar actions = {\n  select: function select(country) {\n    return { type: _constants2.default.SELECT_COUNTRY, country: country };\n  },\n  getAll: function getAll(countries) {\n    return (0, _requestThunk2.default)('GET_COUNTRIES', 'country', 'GET');\n  }\n};\n\nexports.default = actions;\n\n//# sourceURL=webpack:///./src/common/actions/countries.js?");
-
-/***/ }),
-
-/***/ "./src/common/actions/nameHelpers.js":
-/*!*******************************************!*\
-  !*** ./src/common/actions/nameHelpers.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  pendingType: function pendingType(name) {\n    return name + \"_PENDING\";\n  },\n  rejectedType: function rejectedType(name) {\n    return name + \"_REJECTED\";\n  },\n  fulfilledType: function fulfilledType(name) {\n    return name + \"_FULFILLED\";\n  }\n};\n\n//# sourceURL=webpack:///./src/common/actions/nameHelpers.js?");
-
-/***/ }),
-
-/***/ "./src/common/actions/retailers.js":
-/*!*****************************************!*\
-  !*** ./src/common/actions/retailers.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _requestThunk = __webpack_require__(/*! Reducers/requestThunk */ \"./src/common/reducers/requestThunk.js\");\n\nvar _requestThunk2 = _interopRequireDefault(_requestThunk);\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar actions = {\n  select: function select(retailer) {\n    return { type: _constants2.default.SELECT_RETAILER, retailer: retailer };\n  },\n  getFromCountry: function getFromCountry(country) {\n    return (0, _requestThunk2.default)(_constants2.default.GET_RETAILERS, 'retailers/' + country, 'GET');\n  },\n  emptyRetailersList: function emptyRetailersList() {\n    return { type: _constants2.default.EMPTY_RETAILERS_LIST };\n  }\n};\n\nexports.default = actions;\n\n//# sourceURL=webpack:///./src/common/actions/retailers.js?");
-
-/***/ }),
-
 /***/ "./src/common/components/App/App.jsx":
 /*!*******************************************!*\
   !*** ./src/common/components/App/App.jsx ***!
@@ -144,31 +108,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("/* WEBPACK VAR INJECTION */(function(module) {\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _renderRoutes = __webpack_require__(/*! react-router-config/renderRoutes */ \"react-router-config/renderRoutes\");\n\nvar _renderRoutes2 = _interopRequireDefault(_renderRoutes);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _countries = __webpack_require__(/*! Actions/countries */ \"./src/common/actions/countries.js\");\n\nvar _countries2 = _interopRequireDefault(_countries);\n\nvar _Header = __webpack_require__(/*! Containers/Header/Header */ \"./src/common/containers/Header/Header.jsx\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _theme = __webpack_require__(/*! Layouts/theme */ \"./src/common/layouts/theme.js\");\n\nvar _theme2 = _interopRequireDefault(_theme);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    _styles.MuiThemeProvider,\n    { theme: _theme2.default },\n    _react2.default.createElement(_Header2.default, null),\n    (0, _renderRoutes2.default)(route.routes)\n  );\n};\n\nApp.propTypes = {\n  route: _propTypes2.default.object.isRequired\n};\n\nvar AppToExport = void 0;\n\nif (true) {\n  var _require = __webpack_require__(/*! react-hot-loader */ \"react-hot-loader\"),\n      hot = _require.hot;\n\n  AppToExport = hot(module)(App);\n} else {}\n\nexports.default = (0, _reduxConnect.asyncConnect)([{\n  promise: function promise(_ref2) {\n    var dispatch = _ref2.store.dispatch,\n        match = _ref2.match;\n\n    return Promise.resolve('');\n  }\n}])(AppToExport);\n\n// export default AppToExport;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/module.js */ \"./node_modules/webpack/buildin/module.js\")(module)))\n\n//# sourceURL=webpack:///./src/common/components/App/App.jsx?");
-
-/***/ }),
-
-/***/ "./src/common/components/SelectCountry/SelectCountry.jsx":
-/*!***************************************************************!*\
-  !*** ./src/common/components/SelectCountry/SelectCountry.jsx ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactSelect = __webpack_require__(/*! react-select */ \"react-select\");\n\nvar _reactSelect2 = _interopRequireDefault(_reactSelect);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar SelectCountry = function SelectCountry(_ref) {\n  var selected = _ref.selected,\n      onSelect = _ref.onSelect,\n      countriesList = _ref.countriesList;\n\n  var value = selected && selected.value;\n  return _react2.default.createElement(\n    'div',\n    { className: 'select-country' },\n    _react2.default.createElement(_reactSelect2.default, {\n      placeholder: 'Select a country',\n      name: 'select-country-field',\n      value: value,\n      onChange: onSelect,\n      options: countriesList\n    })\n  );\n};\n\nSelectCountry.propTypes = {\n  selected: _propTypes2.default.object.isRequired,\n  onSelect: _propTypes2.default.func.isRequired,\n  countriesList: _propTypes2.default.array.isRequired\n};\n\nexports.default = SelectCountry;\n\n//# sourceURL=webpack:///./src/common/components/SelectCountry/SelectCountry.jsx?");
-
-/***/ }),
-
-/***/ "./src/common/components/SelectRetailer/SelectRetailer.jsx":
-/*!*****************************************************************!*\
-  !*** ./src/common/components/SelectRetailer/SelectRetailer.jsx ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactVirtualizedSelect = __webpack_require__(/*! react-virtualized-select */ \"react-virtualized-select\");\n\nvar _reactVirtualizedSelect2 = _interopRequireDefault(_reactVirtualizedSelect);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar SelectRetailer = function SelectRetailer(_ref) {\n  var selected = _ref.selected,\n      onSelect = _ref.onSelect,\n      retailersList = _ref.retailersList;\n\n  var value = selected && selected.id;\n  return _react2.default.createElement(\n    'div',\n    { className: 'select-retailer' },\n    _react2.default.createElement(_reactVirtualizedSelect2.default, {\n      placeholder: 'Select a retailer',\n      name: 'select-retailer-field',\n      valueKey: 'id',\n      labelKey: 'name',\n      value: value,\n      onChange: onSelect,\n      options: retailersList\n    })\n  );\n};\n\nSelectRetailer.propTypes = {\n  selected: _propTypes2.default.object.isRequired,\n  onSelect: _propTypes2.default.func.isRequired,\n  retailersList: _propTypes2.default.array.isRequired\n};\n\nexports.default = SelectRetailer;\n\n//# sourceURL=webpack:///./src/common/components/SelectRetailer/SelectRetailer.jsx?");
+eval("/* WEBPACK VAR INJECTION */(function(module) {\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _renderRoutes = __webpack_require__(/*! react-router-config/renderRoutes */ \"react-router-config/renderRoutes\");\n\nvar _renderRoutes2 = _interopRequireDefault(_renderRoutes);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _Header = __webpack_require__(/*! Containers/Header/Header */ \"./src/common/containers/Header/Header.jsx\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _theme = __webpack_require__(/*! Layouts/theme */ \"./src/common/layouts/theme.js\");\n\nvar _theme2 = _interopRequireDefault(_theme);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    _styles.MuiThemeProvider,\n    { theme: _theme2.default },\n    _react2.default.createElement(_Header2.default, null),\n    (0, _renderRoutes2.default)(route.routes)\n  );\n};\n\nApp.propTypes = {\n  route: _propTypes2.default.object.isRequired\n};\n\nvar AppToExport = void 0;\n\nif (true) {\n  var _require = __webpack_require__(/*! react-hot-loader */ \"react-hot-loader\"),\n      hot = _require.hot;\n\n  AppToExport = hot(module)(App);\n} else {}\n\nexports.default = AppToExport;\n\n// export default AppToExport;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/module.js */ \"./node_modules/webpack/buildin/module.js\")(module)))\n\n//# sourceURL=webpack:///./src/common/components/App/App.jsx?");
 
 /***/ }),
 
@@ -192,7 +132,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _AppBar = __webpack_require__(/*! material-ui/AppBar */ \"material-ui/AppBar\");\n\nvar _AppBar2 = _interopRequireDefault(_AppBar);\n\nvar _Toolbar = __webpack_require__(/*! material-ui/Toolbar */ \"material-ui/Toolbar\");\n\nvar _Toolbar2 = _interopRequireDefault(_Toolbar);\n\nvar _countries = __webpack_require__(/*! Actions/countries */ \"./src/common/actions/countries.js\");\n\nvar _countries2 = _interopRequireDefault(_countries);\n\nvar _retailers = __webpack_require__(/*! Actions/retailers */ \"./src/common/actions/retailers.js\");\n\nvar _retailers2 = _interopRequireDefault(_retailers);\n\nvar _SelectCountry = __webpack_require__(/*! Components/SelectCountry/SelectCountry */ \"./src/common/components/SelectCountry/SelectCountry.jsx\");\n\nvar _SelectCountry2 = _interopRequireDefault(_SelectCountry);\n\nvar _SelectRetailer = __webpack_require__(/*! Components/SelectRetailer/SelectRetailer */ \"./src/common/components/SelectRetailer/SelectRetailer.jsx\");\n\nvar _SelectRetailer2 = _interopRequireDefault(_SelectRetailer);\n\nvar _UserMenu = __webpack_require__(/*! Components/UserMenu/UserMenu */ \"./src/common/components/UserMenu/UserMenu.jsx\");\n\nvar _UserMenu2 = _interopRequireDefault(_UserMenu);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Header = function (_Component) {\n  _inherits(Header, _Component);\n\n  function Header(props) {\n    _classCallCheck(this, Header);\n\n    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));\n\n    _this._onSelectCountry = _this._onSelectCountry.bind(_this);\n    _this._onSelectRetailer = _this._onSelectRetailer.bind(_this);\n    _this._updateUrlCountry = _this._updateUrlCountry.bind(_this);\n    _this._updateUrlRetailer = _this._updateUrlRetailer.bind(_this);\n    return _this;\n  }\n\n  _createClass(Header, [{\n    key: 'componentDidUpdate',\n    value: function componentDidUpdate(prevProps) {\n      var _props = this.props,\n          countries = _props.countries,\n          retailers = _props.retailers;\n\n      if ((prevProps.countries.selected.value || '') !== (countries.selected.value || '')) {\n        // country changed\n        // export to function\n        if (countries.selected.value) {\n          this.props.dispatch(_retailers2.default.getFromCountry(countries.selected.value));\n        }\n        this._updateUrlCountry();\n      } else if ((prevProps.retailers.selected.name || '') !== (retailers.selected.name || '')) {\n        // retailer changed\n        this._updateUrlRetailer();\n      }\n    }\n  }, {\n    key: '_onSelectCountry',\n    value: function _onSelectCountry(country) {\n      this.props.dispatch(_countries2.default.select(country || {}));\n    }\n  }, {\n    key: '_onSelectRetailer',\n    value: function _onSelectRetailer(retailer) {\n      this.props.dispatch(_retailers2.default.select(retailer || {}));\n    }\n  }, {\n    key: '_updateUrlCountry',\n    value: function _updateUrlCountry() {\n      var selected = this.props.countries.selected;\n\n      var countryUrl = selected.value ? selected.label.toLowerCase() : '';\n      window.history.replaceState({}, document.title, '/' + countryUrl);\n    }\n  }, {\n    key: '_updateUrlRetailer',\n    value: function _updateUrlRetailer() {\n      var _props2 = this.props,\n          countries = _props2.countries,\n          retailers = _props2.retailers;\n\n      var countryUrl = countries.selected.value ? '/' + countries.selected.label.toLowerCase() : '';\n      var retailerUrl = retailers.selected.name ? '/' + encodeURIComponent(retailers.selected.name) : '';\n      window.history.replaceState({}, document.title, '' + countryUrl + retailerUrl);\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var _props3 = this.props,\n          countries = _props3.countries,\n          retailers = _props3.retailers,\n          auth = _props3.auth;\n\n      var styles = {\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'space-between'\n      };\n\n      return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n          _AppBar2.default,\n          { position: 'static', color: 'primary' },\n          _react2.default.createElement(_Toolbar2.default, { style: styles })\n        )\n      );\n    }\n  }]);\n\n  return Header;\n}(_react.Component);\n\nHeader.propTypes = {\n  dispatch: _propTypes2.default.func.isRequired,\n  countries: _propTypes2.default.object.isRequired,\n  retailers: _propTypes2.default.object.isRequired,\n  auth: _propTypes2.default.object.isRequired\n};\n\n\nvar mapStateToProps = function mapStateToProps(state, ownProps) {\n  return {\n    countries: state.countries,\n    retailers: state.retailers,\n    auth: state.auth\n  };\n};\n\nexports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);\n\n//# sourceURL=webpack:///./src/common/containers/Header/Header.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _AppBar = __webpack_require__(/*! material-ui/AppBar */ \"material-ui/AppBar\");\n\nvar _AppBar2 = _interopRequireDefault(_AppBar);\n\nvar _Toolbar = __webpack_require__(/*! material-ui/Toolbar */ \"material-ui/Toolbar\");\n\nvar _Toolbar2 = _interopRequireDefault(_Toolbar);\n\nvar _UserMenu = __webpack_require__(/*! Components/UserMenu/UserMenu */ \"./src/common/components/UserMenu/UserMenu.jsx\");\n\nvar _UserMenu2 = _interopRequireDefault(_UserMenu);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Header = function (_Component) {\n  _inherits(Header, _Component);\n\n  function Header(props) {\n    _classCallCheck(this, Header);\n\n    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));\n  }\n\n  _createClass(Header, [{\n    key: 'componentDidUpdate',\n    value: function componentDidUpdate(prevProps) {}\n  }, {\n    key: 'render',\n    value: function render() {\n      var styles = {\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'space-between'\n      };\n\n      return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n          _AppBar2.default,\n          { position: 'static', color: 'primary' },\n          _react2.default.createElement(_Toolbar2.default, { style: styles })\n        )\n      );\n    }\n  }]);\n\n  return Header;\n}(_react.Component);\n\nHeader.propTypes = {\n  dispatch: _propTypes2.default.func.isRequired,\n  auth: _propTypes2.default.object.isRequired\n};\n\n\nvar mapStateToProps = function mapStateToProps(state, ownProps) {\n  return {\n    auth: state.auth\n  };\n};\n\nexports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);\n\n//# sourceURL=webpack:///./src/common/containers/Header/Header.jsx?");
 
 /***/ }),
 
@@ -204,7 +144,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nvar _countries = __webpack_require__(/*! Actions/countries */ \"./src/common/actions/countries.js\");\n\nvar _countries2 = _interopRequireDefault(_countries);\n\nvar _retailers = __webpack_require__(/*! Actions/retailers */ \"./src/common/actions/retailers.js\");\n\nvar _retailers2 = _interopRequireDefault(_retailers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n  return _react2.default.createElement('div', null);\n};\n\nexports.default = (0, _reduxConnect.asyncConnect)([{\n  promise: function promise(_ref) {\n    var _ref$store = _ref.store,\n        dispatch = _ref$store.dispatch,\n        getState = _ref$store.getState,\n        match = _ref.match,\n        helpers = _ref.helpers;\n\n    return Promise.resolve('async connect');\n  }\n}])(Home);\n\n//# sourceURL=webpack:///./src/common/containers/Home/Home.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n  return _react2.default.createElement('div', null);\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/common/containers/Home/Home.jsx?");
 
 /***/ }),
 
@@ -240,7 +180,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _red = __webpack_require__(/*! material-ui/colors/red */ \"material-ui/colors/red\");\n\nvar _red2 = _interopRequireDefault(_red);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar theme = (0, _styles.createMuiTheme)({\n  palette: {\n    primary: _red2.default\n  }\n});\n\nexports.default = theme;\n\n//# sourceURL=webpack:///./src/common/layouts/theme.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _green = __webpack_require__(/*! material-ui/colors/green */ \"material-ui/colors/green\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar theme = (0, _styles.createMuiTheme)({\n  palette: {\n    primary: _green2.default\n  }\n});\n\nexports.default = theme;\n\n//# sourceURL=webpack:///./src/common/layouts/theme.js?");
 
 /***/ }),
 
@@ -253,42 +193,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = {};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants2.default.GET_AUTH:\n      return action.auth;\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/common/reducers/auth.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/countries/list.js":
-/*!***********************************************!*\
-  !*** ./src/common/reducers/countries/list.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _handlers;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nvar _defaultState = __webpack_require__(/*! ../defaultState */ \"./src/common/reducers/defaultState.js\");\n\nvar _defaultState2 = _interopRequireDefault(_defaultState);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar initialState = _extends({}, _defaultState2.default);\n\nvar handlers = (_handlers = {}, _defineProperty(_handlers, _nameHelpers2.default.pendingType(_constants2.default.GET_COUNTRIES), function (state, action) {\n  return _extends({}, state, {\n    isPending: true,\n    isFulfilled: false,\n    isRejected: false\n  });\n}), _defineProperty(_handlers, _nameHelpers2.default.rejectedType(_constants2.default.GET_COUNTRIES), function (state, action) {\n  var error = action.payload.error;\n\n  return {\n    isRejected: true,\n    isPending: false,\n    isFulfilled: false,\n    error: error,\n    items: []\n  };\n}), _defineProperty(_handlers, _nameHelpers2.default.fulfilledType(_constants2.default.GET_COUNTRIES), function (state, action) {\n  var items = action.payload.items;\n\n  var newItems = items.countries.map(function (country) {\n    return {\n      label: country.Name,\n      value: country.Acronym\n    };\n  });\n  return {\n    isRejected: false,\n    isPending: false,\n    isFulfilled: true,\n    error: null,\n    items: newItems\n  };\n}), _handlers);\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  var handler = handlers[action.type];\n  if (handler) {\n    return handler(state, action);\n  }\n  return state;\n};\n\n//# sourceURL=webpack:///./src/common/reducers/countries/list.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/countries/selected.js":
-/*!***************************************************!*\
-  !*** ./src/common/reducers/countries/selected.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = {};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants2.default.SELECT_COUNTRY:\n      return action.country;\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/common/reducers/countries/selected.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/defaultState.js":
-/*!*********************************************!*\
-  !*** ./src/common/reducers/defaultState.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar defaultState = {\n  isPending: false,\n  isFulfilled: false,\n  isRejected: false,\n  error: null,\n  items: []\n};\n\nexports.default = defaultState;\n\n//# sourceURL=webpack:///./src/common/reducers/defaultState.js?");
 
 /***/ }),
 
@@ -312,43 +216,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _selected = __webpack_require__(/*! ./countries/selected */ \"./src/common/reducers/countries/selected.js\");\n\nvar _selected2 = _interopRequireDefault(_selected);\n\nvar _list = __webpack_require__(/*! ./countries/list */ \"./src/common/reducers/countries/list.js\");\n\nvar _list2 = _interopRequireDefault(_list);\n\nvar _selected3 = __webpack_require__(/*! ./retailers/selected */ \"./src/common/reducers/retailers/selected.js\");\n\nvar _selected4 = _interopRequireDefault(_selected3);\n\nvar _list3 = __webpack_require__(/*! ./retailers/list */ \"./src/common/reducers/retailers/list.js\");\n\nvar _list4 = _interopRequireDefault(_list3);\n\nvar _auth = __webpack_require__(/*! ./auth */ \"./src/common/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = {\n  countries: (0, _redux.combineReducers)({\n    selected: _selected2.default,\n    list: _list2.default\n  }),\n  retailers: (0, _redux.combineReducers)({\n    selected: _selected4.default,\n    list: _list4.default\n  }),\n  auth: _auth2.default\n};\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/requestThunk.js":
-/*!*********************************************!*\
-  !*** ./src/common/reducers/requestThunk.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nvar _Configs = __webpack_require__(/*! Configs */ \"./src/configs.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar actionPending = function actionPending(actionName) {\n  return {\n    type: _nameHelpers2.default.pendingType(actionName),\n    payload: {}\n  };\n};\n\nvar actionRejected = function actionRejected(actionName, error) {\n  return {\n    type: _nameHelpers2.default.rejectedType(actionName),\n    payload: {\n      error: error\n    }\n  };\n};\n\nvar actionFulfilled = function actionFulfilled(actionName, items) {\n  return {\n    type: _nameHelpers2.default.fulfilledType(actionName),\n    payload: {\n      items: items\n    }\n  };\n};\n\nexports.default = function (actionName, url, method, params) {\n  return function (dispatch) {\n    dispatch(actionPending(actionName));\n\n    return (0, _axios2.default)({\n      url: _Configs.API_URL + '/' + url,\n      method: method,\n      headers: {\n        Identity: 'StoresSuperSercret'\n      }\n    }).then(function (response) {\n      return dispatch(actionFulfilled(actionName, response.data));\n    }, function (error) {\n      dispatch(actionRejected(actionName, error));\n      throw new Error(error);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/common/reducers/requestThunk.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/retailers/list.js":
-/*!***********************************************!*\
-  !*** ./src/common/reducers/retailers/list.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _handlers;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nvar _defaultState = __webpack_require__(/*! ../defaultState */ \"./src/common/reducers/defaultState.js\");\n\nvar _defaultState2 = _interopRequireDefault(_defaultState);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar initialState = _extends({}, _defaultState2.default);\n\nvar handlers = (_handlers = {}, _defineProperty(_handlers, _constants2.default.EMPTY_RETAILERS_LIST, function (state, action) {\n  return _extends({}, _defaultState2.default);\n}), _defineProperty(_handlers, _nameHelpers2.default.pendingType(_constants2.default.GET_RETAILERS), function (state, action) {\n  return _extends({}, state, {\n    isPending: true,\n    isFulfilled: false,\n    isRejected: false\n  });\n}), _defineProperty(_handlers, _nameHelpers2.default.rejectedType(_constants2.default.GET_RETAILERS), function (state, action) {\n  var error = action.payload.error;\n\n  return {\n    isRejected: true,\n    isPending: false,\n    isFulfilled: false,\n    error: error,\n    items: []\n  };\n}), _defineProperty(_handlers, _nameHelpers2.default.fulfilledType(_constants2.default.GET_RETAILERS), function (state, action) {\n  var items = action.payload.items;\n\n  var newItems = items.retailers.map(function (retailer) {\n    return {\n      id: retailer.Id,\n      name: retailer.Name\n    };\n  });\n  return {\n    isRejected: false,\n    isPending: false,\n    isFulfilled: true,\n    error: null,\n    items: newItems\n  };\n}), _handlers);\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  var handler = handlers[action.type];\n  if (handler) {\n    return handler(state, action);\n  }\n  return state;\n};\n\n//# sourceURL=webpack:///./src/common/reducers/retailers/list.js?");
-
-/***/ }),
-
-/***/ "./src/common/reducers/retailers/selected.js":
-/*!***************************************************!*\
-  !*** ./src/common/reducers/retailers/selected.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = {};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants2.default.SELECT_RETAILER:\n      return action.retailer;\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/common/reducers/retailers/selected.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _auth = __webpack_require__(/*! ./auth */ \"./src/common/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = {\n  auth: _auth2.default\n};\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
 
 /***/ }),
 
@@ -372,7 +240,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar PORT = process.env.PORT;\nvar NODE_ENV = \"development\";\nvar API_URL = \"http://localhost:5842/api-stores\";\nvar DEV_SERVER = process.env.DEV_SERVER;\nvar API_HOST = process.env.API_HOST;\nvar AUTH_ENDPOINT = process.env.AUTH_ENDPOINT;\nvar AUTH_ENDPOINT_BACK = \"http://localhost:5842/auth\";\n\nmodule.exports = {\n  PORT: PORT,\n  NODE_ENV: NODE_ENV,\n  API_URL: API_URL,\n  DEV_SERVER: DEV_SERVER,\n  API_HOST: API_HOST,\n  AUTH_ENDPOINT: AUTH_ENDPOINT,\n  AUTH_ENDPOINT_BACK: AUTH_ENDPOINT_BACK\n};\n\n//# sourceURL=webpack:///./src/configs.js?");
+eval("\n\nvar PORT = process.env.PORT;\nvar NODE_ENV = \"development\";\nvar API_URL = \"\";\nvar DEV_SERVER = process.env.DEV_SERVER;\nvar API_HOST = process.env.API_HOST;\nvar AUTH_ENDPOINT = process.env.AUTH_ENDPOINT;\nvar AUTH_ENDPOINT_BACK = \"\";\n\nmodule.exports = {\n  PORT: PORT,\n  NODE_ENV: NODE_ENV,\n  API_URL: API_URL,\n  DEV_SERVER: DEV_SERVER,\n  API_HOST: API_HOST,\n  AUTH_ENDPOINT: AUTH_ENDPOINT,\n  AUTH_ENDPOINT_BACK: AUTH_ENDPOINT_BACK\n};\n\n//# sourceURL=webpack:///./src/configs.js?");
 
 /***/ }),
 
@@ -545,14 +413,14 @@ eval("module.exports = require(\"material-ui/Toolbar\");\n\n//# sourceURL=webpac
 
 /***/ }),
 
-/***/ "material-ui/colors/red":
-/*!*****************************************!*\
-  !*** external "material-ui/colors/red" ***!
-  \*****************************************/
+/***/ "material-ui/colors/green":
+/*!*******************************************!*\
+  !*** external "material-ui/colors/green" ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"material-ui/colors/red\");\n\n//# sourceURL=webpack:///external_%22material-ui/colors/red%22?");
+eval("module.exports = require(\"material-ui/colors/green\");\n\n//# sourceURL=webpack:///external_%22material-ui/colors/green%22?");
 
 /***/ }),
 
@@ -663,28 +531,6 @@ eval("module.exports = require(\"react-router-config/renderRoutes\");\n\n//# sou
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
-
-/***/ }),
-
-/***/ "react-select":
-/*!*******************************!*\
-  !*** external "react-select" ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"react-select\");\n\n//# sourceURL=webpack:///external_%22react-select%22?");
-
-/***/ }),
-
-/***/ "react-virtualized-select":
-/*!*******************************************!*\
-  !*** external "react-virtualized-select" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"react-virtualized-select\");\n\n//# sourceURL=webpack:///external_%22react-virtualized-select%22?");
 
 /***/ }),
 

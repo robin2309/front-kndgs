@@ -4,7 +4,6 @@ import renderRoutes from 'react-router-config/renderRoutes';
 import { asyncConnect } from 'redux-connect';
 import { MuiThemeProvider } from 'material-ui/styles';
 
-import countriesActions from 'Actions/countries';
 import Header from 'Containers/Header/Header';
 import theme from 'Layouts/theme';
 
@@ -30,12 +29,6 @@ if (__CONFIGS__.isDevServer) {
   AppToExport = App;
 }
 
-export default asyncConnect([
-  {
-    promise: ({ store: { dispatch }, match }) => {
-      return Promise.resolve('');
-    }
-  }
-])(AppToExport);
+export default AppToExport;
 
 // export default AppToExport;
