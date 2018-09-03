@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import renderRoutes from 'react-router-config/renderRoutes';
 import { asyncConnect } from 'redux-connect';
-import { MuiThemeProvider } from 'material-ui/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import Header from 'Containers/Header/Header';
+import Header from 'Components/Header/Header';
 import theme from 'Layouts/theme';
 
 const App = ({ route }) => {
@@ -30,5 +30,3 @@ if (__CONFIGS__.isDevServer) {
 }
 
 export default AppToExport;
-
-// export default AppToExport;

@@ -2,7 +2,7 @@ import React from 'react';
 import { asyncConnect } from 'redux-connect';
 
 const Home = props => {
-  return <div />;
+  return <div>HOME</div>;
 };
 
 export default Home;

@@ -63,7 +63,8 @@ const alias = {
 	Utils: path.resolve(__dirname, '../src/utils/'),
 	Reducers: path.resolve(__dirname, '../src/common/reducers/'),
   Actions: path.resolve(__dirname, '../src/common/actions/'),
-  Layouts: path.resolve(__dirname, '../src/common/layouts/')
+  Layouts: path.resolve(__dirname, '../src/common/layouts/'),
+  Ui: path.resolve(__dirname, '../src/common/components/Ui')
 };
 
 const serverConfig = {

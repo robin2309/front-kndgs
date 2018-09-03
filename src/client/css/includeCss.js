@@ -1,6 +1,6 @@
 // components
-import 'Containers/Header/Header.less';
-import 'Components/App/App.less';
+import 'Components/Header/Header.less';
+import 'Containers/App/App.less';
 
 // external css
 import 'react-select/dist/react-select.css';

@@ -2,9 +2,6 @@
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
-/******/ 	// object to store loaded and loading wasm modules
-/******/ 	var installedWasmModules = {};
-/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -39,17 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -67,9 +79,6 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	// object with all compiled WebAssembly.Modules
-/******/ 	__webpack_require__.w = {};
-/******/
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -84,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = function(module) {\r\n\tif (!module.webpackPolyfill) {\r\n\t\tmodule.deprecate = function() {};\r\n\t\tmodule.paths = [];\r\n\t\t// module.parent = undefined by default\r\n\t\tif (!module.children) module.children = [];\r\n\t\tObject.defineProperty(module, \"loaded\", {\r\n\t\t\tenumerable: true,\r\n\t\t\tget: function() {\r\n\t\t\t\treturn module.l;\r\n\t\t\t}\r\n\t\t});\r\n\t\tObject.defineProperty(module, \"id\", {\r\n\t\t\tenumerable: true,\r\n\t\t\tget: function() {\r\n\t\t\t\treturn module.i;\r\n\t\t\t}\r\n\t\t});\r\n\t\tmodule.webpackPolyfill = 1;\r\n\t}\r\n\treturn module;\r\n};\r\n\n\n//# sourceURL=webpack:///(webpack)/buildin/module.js?");
+eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\tmodule.deprecate = function() {};\n\t\tmodule.paths = [];\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack:///(webpack)/buildin/module.js?");
 
 /***/ }),
 
@@ -96,19 +105,31 @@ eval("module.exports = function(module) {\r\n\tif (!module.webpackPolyfill) {\r\
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar actionNames = {\n  SELECT_COUNTRY: 'SELECT_COUNTRY',\n  SELECT_COUNTRY_FROM_URL: 'SELECT_COUNTRY_FROM_URL',\n  GET_COUNTRIES: 'GET_COUNTRIES',\n  SELECT_RETAILER: 'SELECT_RETAILER',\n  GET_RETAILERS: 'GET_RETAILERS',\n  EMPTY_RETAILERS_LIST: 'EMPTY_RETAILERS_LIST',\n  GET_AUTH: 'GET_AUTH'\n};\n\nexports.default = actionNames;\n\n//# sourceURL=webpack:///./src/common/actions/constants.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar actionNames = {\n  GET_AUTH: 'GET_AUTH',\n  SHOW_LOGIN_FORM: 'SHOW_LOGIN_FORM',\n  HIDE_LOGIN_FORM: 'HIDE_LOGIN_FORM'\n};\n\nexports.default = actionNames;\n\n//# sourceURL=webpack:///./src/common/actions/constants.js?");
 
 /***/ }),
 
-/***/ "./src/common/components/App/App.jsx":
-/*!*******************************************!*\
-  !*** ./src/common/components/App/App.jsx ***!
-  \*******************************************/
+/***/ "./src/common/actions/setShowLoginForm.js":
+/*!************************************************!*\
+  !*** ./src/common/actions/setShowLoginForm.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("/* WEBPACK VAR INJECTION */(function(module) {\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _renderRoutes = __webpack_require__(/*! react-router-config/renderRoutes */ \"react-router-config/renderRoutes\");\n\nvar _renderRoutes2 = _interopRequireDefault(_renderRoutes);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _Header = __webpack_require__(/*! Containers/Header/Header */ \"./src/common/containers/Header/Header.jsx\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _theme = __webpack_require__(/*! Layouts/theme */ \"./src/common/layouts/theme.js\");\n\nvar _theme2 = _interopRequireDefault(_theme);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    _styles.MuiThemeProvider,\n    { theme: _theme2.default },\n    _react2.default.createElement(_Header2.default, null),\n    (0, _renderRoutes2.default)(route.routes)\n  );\n};\n\nApp.propTypes = {\n  route: _propTypes2.default.object.isRequired\n};\n\nvar AppToExport = void 0;\n\nif (true) {\n  var _require = __webpack_require__(/*! react-hot-loader */ \"react-hot-loader\"),\n      hot = _require.hot;\n\n  AppToExport = hot(module)(App);\n} else {}\n\nexports.default = AppToExport;\n\n// export default AppToExport;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/module.js */ \"./node_modules/webpack/buildin/module.js\")(module)))\n\n//# sourceURL=webpack:///./src/common/components/App/App.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.hideLoginForm = exports.showLoginForm = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar showLoginForm = exports.showLoginForm = function showLoginForm() {\n  return {\n    type: _constants2.default.SHOW_LOGIN_FORM\n  };\n};\n\nvar hideLoginForm = exports.hideLoginForm = function hideLoginForm() {\n  return {\n    type: _constants2.default.HIDE_LOGIN_FORM\n  };\n};\n\n//# sourceURL=webpack:///./src/common/actions/setShowLoginForm.js?");
+
+/***/ }),
+
+/***/ "./src/common/components/Header/Header.jsx":
+/*!*************************************************!*\
+  !*** ./src/common/components/Header/Header.jsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _AppBar = __webpack_require__(/*! @material-ui/core/AppBar */ \"@material-ui/core/AppBar\");\n\nvar _AppBar2 = _interopRequireDefault(_AppBar);\n\nvar _Toolbar = __webpack_require__(/*! @material-ui/core/Toolbar */ \"@material-ui/core/Toolbar\");\n\nvar _Toolbar2 = _interopRequireDefault(_Toolbar);\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"@material-ui/core/styles\");\n\nvar _compose = __webpack_require__(/*! Utils/compose */ \"./src/utils/compose.js\");\n\nvar _UserMenu = __webpack_require__(/*! Components/UserMenu/UserMenu */ \"./src/common/components/UserMenu/UserMenu.jsx\");\n\nvar _UserMenu2 = _interopRequireDefault(_UserMenu);\n\nvar _setShowLoginForm = __webpack_require__(/*! Actions/setShowLoginForm */ \"./src/common/actions/setShowLoginForm.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar styles = {\n  logo: {\n    height: '40px'\n  },\n  toolbar: {\n    display: 'flex',\n    alignItems: 'center',\n    justifyContent: 'space-between'\n  }\n};\n\nvar Header = function (_Component) {\n  _inherits(Header, _Component);\n\n  function Header() {\n    _classCallCheck(this, Header);\n\n    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));\n  }\n\n  _createClass(Header, [{\n    key: 'render',\n    value: function render() {\n      var _props = this.props,\n          classes = _props.classes,\n          auth = _props.auth,\n          openLoginForm = _props.openLoginForm;\n\n\n      return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n          _AppBar2.default,\n          { position: 'static', color: 'primary' },\n          _react2.default.createElement(\n            _Toolbar2.default,\n            { className: classes.toolbar },\n            _react2.default.createElement(\n              'div',\n              null,\n              _react2.default.createElement(\n                _reactRouterDom.Link,\n                { to: '/about' },\n                _react2.default.createElement('img', { className: classes.logo, src: '/static/logo.png', alt: 'logo' })\n              )\n            ),\n            _react2.default.createElement(\n              'div',\n              null,\n              _react2.default.createElement(_UserMenu2.default, { auth: auth, openLoginForm: openLoginForm })\n            )\n          )\n        )\n      );\n    }\n  }]);\n\n  return Header;\n}(_react.Component);\n\nHeader.propTypes = {\n  classes: _propTypes2.default.object.isRequired,\n  auth: _propTypes2.default.object,\n  openLoginForm: _propTypes2.default.func.isRequired,\n  hideLoginForm: _propTypes2.default.func.isRequired\n};\n\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    openLoginForm: function openLoginForm() {\n      return dispatch((0, _setShowLoginForm.showLoginForm)());\n    },\n    hideLoginForm: function hideLoginForm() {\n      return dispatch((0, _setShowLoginForm.hideLoginForm)());\n    }\n  };\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    auth: state.auth,\n    showLoginForm: state.showLoginForm\n  };\n};\n\nexports.default = (0, _compose.compose)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps), (0, _styles.withStyles)(styles))(Header);\n\n//# sourceURL=webpack:///./src/common/components/Header/Header.jsx?");
 
 /***/ }),
 
@@ -120,19 +141,19 @@ eval("/* WEBPACK VAR INJECTION */(function(module) {\n\nObject.defineProperty(ex
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _Avatar = __webpack_require__(/*! material-ui/Avatar */ \"material-ui/Avatar\");\n\nvar _Avatar2 = _interopRequireDefault(_Avatar);\n\nvar _Menu = __webpack_require__(/*! material-ui/Menu */ \"material-ui/Menu\");\n\nvar _Menu2 = _interopRequireDefault(_Menu);\n\nvar _List = __webpack_require__(/*! material-ui/List */ \"material-ui/List\");\n\nvar _Icon = __webpack_require__(/*! material-ui/Icon */ \"material-ui/Icon\");\n\nvar _Icon2 = _interopRequireDefault(_Icon);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar UserMenu = function (_Component) {\n  _inherits(UserMenu, _Component);\n\n  function UserMenu(props) {\n    _classCallCheck(this, UserMenu);\n\n    var _this = _possibleConstructorReturn(this, (UserMenu.__proto__ || Object.getPrototypeOf(UserMenu)).call(this, props));\n\n    _this._handleClick = _this._handleClick.bind(_this);\n    _this._handleClose = _this._handleClose.bind(_this);\n    _this._logOut = _this._logOut.bind(_this);\n\n    _this.state = {\n      anchorEl: null\n    };\n    return _this;\n  }\n\n  _createClass(UserMenu, [{\n    key: '_handleClick',\n    value: function _handleClick(event) {\n      this.setState({ anchorEl: event.currentTarget });\n    }\n  }, {\n    key: '_handleClose',\n    value: function _handleClose() {\n      this.setState({ anchorEl: null });\n    }\n  }, {\n    key: '_logOut',\n    value: function _logOut() {\n      window.location.href = '/logout';\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var _props = this.props,\n          image = _props.image,\n          name = _props.name;\n      var anchorEl = this.state.anchorEl;\n\n      return _react2.default.createElement(\n        'div',\n        { className: 'user-menu' },\n        _react2.default.createElement(_Avatar2.default, {\n          onClick: this._handleClick,\n          className: 'user-menu__image',\n          alt: 'profile',\n          src: image,\n          'aria-owns': anchorEl ? 'simple-menu' : null,\n          'aria-haspopup': 'true'\n        }),\n        _react2.default.createElement(\n          _Menu2.default,\n          {\n            id: 'simple-menu',\n            anchorEl: anchorEl,\n            open: !!anchorEl,\n            onClose: this._handleClose\n          },\n          _react2.default.createElement(\n            _Menu.MenuItem,\n            { disabled: true },\n            name\n          ),\n          _react2.default.createElement(\n            _Menu.MenuItem,\n            { onClick: this._logOut },\n            _react2.default.createElement(\n              _List.ListItemIcon,\n              null,\n              _react2.default.createElement(\n                _Icon2.default,\n                null,\n                'exit_to_app'\n              )\n            ),\n            _react2.default.createElement(_List.ListItemText, { inset: true, primary: 'Sign out' })\n          )\n        )\n      );\n    }\n  }]);\n\n  return UserMenu;\n}(_react.Component);\n\n;\n\nUserMenu.propTypes = {\n  image: _propTypes2.default.string.isRequired,\n  name: _propTypes2.default.string.isRequired\n};\n\nexports.default = UserMenu;\n\n//# sourceURL=webpack:///./src/common/components/UserMenu/UserMenu.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _Avatar = __webpack_require__(/*! @material-ui/core/Avatar */ \"@material-ui/core/Avatar\");\n\nvar _Avatar2 = _interopRequireDefault(_Avatar);\n\nvar _Menu = __webpack_require__(/*! @material-ui/core/Menu */ \"@material-ui/core/Menu\");\n\nvar _Menu2 = _interopRequireDefault(_Menu);\n\nvar _MenuItem = __webpack_require__(/*! @material-ui/core/MenuItem */ \"@material-ui/core/MenuItem\");\n\nvar _MenuItem2 = _interopRequireDefault(_MenuItem);\n\nvar _ListItemIcon = __webpack_require__(/*! @material-ui/core/ListItemIcon */ \"@material-ui/core/ListItemIcon\");\n\nvar _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);\n\nvar _ListItemText = __webpack_require__(/*! @material-ui/core/ListItemText */ \"@material-ui/core/ListItemText\");\n\nvar _ListItemText2 = _interopRequireDefault(_ListItemText);\n\nvar _Icon = __webpack_require__(/*! @material-ui/core/Icon */ \"@material-ui/core/Icon\");\n\nvar _Icon2 = _interopRequireDefault(_Icon);\n\nvar _IconButton = __webpack_require__(/*! @material-ui/core/IconButton */ \"@material-ui/core/IconButton\");\n\nvar _IconButton2 = _interopRequireDefault(_IconButton);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar UserMenu = function (_Component) {\n  _inherits(UserMenu, _Component);\n\n  function UserMenu(props) {\n    _classCallCheck(this, UserMenu);\n\n    var _this = _possibleConstructorReturn(this, (UserMenu.__proto__ || Object.getPrototypeOf(UserMenu)).call(this, props));\n\n    _this._handleClick = _this._handleClick.bind(_this);\n    _this._handleClose = _this._handleClose.bind(_this);\n    _this._logOut = _this._logOut.bind(_this);\n\n    _this.state = {\n      anchorEl: null\n    };\n    return _this;\n  }\n\n  _createClass(UserMenu, [{\n    key: '_handleClick',\n    value: function _handleClick(event) {\n      var _props = this.props,\n          auth = _props.auth,\n          openLoginForm = _props.openLoginForm;\n\n      if (auth && auth.name) this.setState({ anchorEl: event.currentTarget });else openLoginForm();\n    }\n  }, {\n    key: '_handleClose',\n    value: function _handleClose() {\n      this.setState({ anchorEl: null });\n    }\n  }, {\n    key: '_logOut',\n    value: function _logOut() {\n      window.location.href = '/logout';\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var anchorEl = this.state.anchorEl;\n\n      return _react2.default.createElement(\n        'div',\n        { className: 'user-menu' },\n        _react2.default.createElement(\n          _IconButton2.default,\n          {\n            onClick: this._handleClick,\n            className: 'user-menu__image',\n            'aria-owns': anchorEl ? 'simple-menu' : null,\n            'aria-haspopup': 'true'\n          },\n          _react2.default.createElement(\n            _Icon2.default,\n            null,\n            'account_circle'\n          )\n        ),\n        _react2.default.createElement(\n          _Menu2.default,\n          {\n            id: 'simple-menu',\n            anchorEl: anchorEl,\n            open: !!anchorEl,\n            onClose: this._handleClose\n          },\n          _react2.default.createElement(\n            _MenuItem2.default,\n            { disabled: true },\n            ''\n          ),\n          _react2.default.createElement(\n            _MenuItem2.default,\n            { onClick: this._logOut },\n            _react2.default.createElement(\n              _ListItemIcon2.default,\n              null,\n              _react2.default.createElement(\n                _Icon2.default,\n                null,\n                'exit_to_app'\n              )\n            ),\n            _react2.default.createElement(_ListItemText2.default, { inset: true, primary: 'Sign out' })\n          )\n        )\n      );\n    }\n  }]);\n\n  return UserMenu;\n}(_react.Component);\n\n;\n\nUserMenu.propTypes = {\n  auth: _propTypes2.default.object,\n  openLoginForm: _propTypes2.default.func.isRequired\n};\n\nexports.default = UserMenu;\n\n//# sourceURL=webpack:///./src/common/components/UserMenu/UserMenu.jsx?");
 
 /***/ }),
 
-/***/ "./src/common/containers/Header/Header.jsx":
-/*!*************************************************!*\
-  !*** ./src/common/containers/Header/Header.jsx ***!
-  \*************************************************/
+/***/ "./src/common/containers/App/App.jsx":
+/*!*******************************************!*\
+  !*** ./src/common/containers/App/App.jsx ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _AppBar = __webpack_require__(/*! material-ui/AppBar */ \"material-ui/AppBar\");\n\nvar _AppBar2 = _interopRequireDefault(_AppBar);\n\nvar _Toolbar = __webpack_require__(/*! material-ui/Toolbar */ \"material-ui/Toolbar\");\n\nvar _Toolbar2 = _interopRequireDefault(_Toolbar);\n\nvar _UserMenu = __webpack_require__(/*! Components/UserMenu/UserMenu */ \"./src/common/components/UserMenu/UserMenu.jsx\");\n\nvar _UserMenu2 = _interopRequireDefault(_UserMenu);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Header = function (_Component) {\n  _inherits(Header, _Component);\n\n  function Header(props) {\n    _classCallCheck(this, Header);\n\n    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));\n  }\n\n  _createClass(Header, [{\n    key: 'componentDidUpdate',\n    value: function componentDidUpdate(prevProps) {}\n  }, {\n    key: 'render',\n    value: function render() {\n      var styles = {\n        display: 'flex',\n        alignItems: 'center',\n        justifyContent: 'space-between'\n      };\n\n      return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n          _AppBar2.default,\n          { position: 'static', color: 'primary' },\n          _react2.default.createElement(_Toolbar2.default, { style: styles })\n        )\n      );\n    }\n  }]);\n\n  return Header;\n}(_react.Component);\n\nHeader.propTypes = {\n  dispatch: _propTypes2.default.func.isRequired,\n  auth: _propTypes2.default.object.isRequired\n};\n\n\nvar mapStateToProps = function mapStateToProps(state, ownProps) {\n  return {\n    auth: state.auth\n  };\n};\n\nexports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);\n\n//# sourceURL=webpack:///./src/common/containers/Header/Header.jsx?");
+eval("/* WEBPACK VAR INJECTION */(function(module) {\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"prop-types\");\n\nvar _propTypes2 = _interopRequireDefault(_propTypes);\n\nvar _renderRoutes = __webpack_require__(/*! react-router-config/renderRoutes */ \"react-router-config/renderRoutes\");\n\nvar _renderRoutes2 = _interopRequireDefault(_renderRoutes);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"@material-ui/core/styles\");\n\nvar _Header = __webpack_require__(/*! Components/Header/Header */ \"./src/common/components/Header/Header.jsx\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _theme = __webpack_require__(/*! Layouts/theme */ \"./src/common/layouts/theme.js\");\n\nvar _theme2 = _interopRequireDefault(_theme);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n\n  return _react2.default.createElement(\n    _styles.MuiThemeProvider,\n    { theme: _theme2.default },\n    _react2.default.createElement(_Header2.default, null),\n    (0, _renderRoutes2.default)(route.routes)\n  );\n};\n\nApp.propTypes = {\n  route: _propTypes2.default.object.isRequired\n};\n\nvar AppToExport = void 0;\n\nif (true) {\n  var _require = __webpack_require__(/*! react-hot-loader */ \"react-hot-loader\"),\n      hot = _require.hot;\n\n  AppToExport = hot(module)(App);\n} else {}\n\nexports.default = AppToExport;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/module.js */ \"./node_modules/webpack/buildin/module.js\")(module)))\n\n//# sourceURL=webpack:///./src/common/containers/App/App.jsx?");
 
 /***/ }),
 
@@ -144,7 +165,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n  return _react2.default.createElement('div', null);\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/common/containers/Home/Home.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reduxConnect = __webpack_require__(/*! redux-connect */ \"redux-connect\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'HOME'\n  );\n};\n\nexports.default = Home;\n\n//# sourceURL=webpack:///./src/common/containers/Home/Home.jsx?");
 
 /***/ }),
 
@@ -180,7 +201,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"material-ui/styles\");\n\nvar _green = __webpack_require__(/*! material-ui/colors/green */ \"material-ui/colors/green\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar theme = (0, _styles.createMuiTheme)({\n  palette: {\n    primary: _green2.default\n  }\n});\n\nexports.default = theme;\n\n//# sourceURL=webpack:///./src/common/layouts/theme.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"@material-ui/core/styles\");\n\nvar _green = __webpack_require__(/*! @material-ui/core/colors/green */ \"@material-ui/core/colors/green\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar theme = (0, _styles.createMuiTheme)({\n  palette: {\n    primary: _green2.default\n  }\n});\n\nexports.default = theme;\n\n//# sourceURL=webpack:///./src/common/layouts/theme.js?");
 
 /***/ }),
 
@@ -216,7 +237,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _auth = __webpack_require__(/*! ./auth */ \"./src/common/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = {\n  auth: _auth2.default\n};\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxForm = __webpack_require__(/*! redux-form */ \"redux-form\");\n\nvar _auth = __webpack_require__(/*! ./auth */ \"./src/common/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = (0, _redux.combineReducers)({\n  auth: _auth2.default,\n  form: _reduxForm.reducer\n});\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
 
 /***/ }),
 
@@ -228,7 +249,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! Containers/Home/Home */ \"./src/common/containers/Home/Home.jsx\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _App = __webpack_require__(/*! Components/App/App */ \"./src/common/components/App/App.jsx\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [{\n  component: _App2.default,\n  routes: [{\n    path: '/:country/:retailer',\n    component: _Home2.default\n  }, {\n    path: '/:country',\n    component: _Home2.default\n  }]\n}];\n\n//# sourceURL=webpack:///./src/common/routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! Containers/Home/Home */ \"./src/common/containers/Home/Home.jsx\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _App = __webpack_require__(/*! Containers/App/App */ \"./src/common/containers/App/App.jsx\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [{\n  component: _App2.default,\n  routes: [{\n    path: '/',\n    component: _Home2.default\n  }]\n}];\n\n//# sourceURL=webpack:///./src/common/routes.js?");
 
 /***/ }),
 
@@ -280,6 +301,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/utils/compose.js":
+/*!******************************!*\
+  !*** ./src/utils/compose.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar compose = exports.compose = function compose() {\n  for (var _len = arguments.length, functionsToApply = Array(_len), _key = 0; _key < _len; _key++) {\n    functionsToApply[_key] = arguments[_key];\n  }\n\n  return function (initialValue) {\n    return functionsToApply.reduceRight(function (value, functionToApply) {\n      return functionToApply(value);\n    }, initialValue);\n  };\n};\n\n//# sourceURL=webpack:///./src/utils/compose.js?");
+
+/***/ }),
+
 /***/ "./src/utils/logger.js":
 /*!*****************************!*\
   !*** ./src/utils/logger.js ***!
@@ -300,6 +333,127 @@ eval("\n\nvar moment = __webpack_require__(/*! moment */ \"moment\");\nvar winst
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("__webpack_require__(/*! babel-polyfill */\"babel-polyfill\");\nmodule.exports = __webpack_require__(/*! ./src/server/index.js */\"./src/server/index.js\");\n\n\n//# sourceURL=webpack:///multi_babel-polyfill_./src/server/index.js?");
+
+/***/ }),
+
+/***/ "@material-ui/core/AppBar":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/AppBar" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/AppBar\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/AppBar%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/Avatar":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Avatar" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/Avatar\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/Avatar%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/Icon":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Icon" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/Icon\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/Icon%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/IconButton":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/IconButton" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/IconButton\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/IconButton%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItemIcon":
+/*!*************************************************!*\
+  !*** external "@material-ui/core/ListItemIcon" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/ListItemIcon\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/ListItemIcon%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItemText":
+/*!*************************************************!*\
+  !*** external "@material-ui/core/ListItemText" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/ListItemText\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/ListItemText%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/Menu":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Menu" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/Menu\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/Menu%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/MenuItem":
+/*!*********************************************!*\
+  !*** external "@material-ui/core/MenuItem" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/MenuItem\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/MenuItem%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/Toolbar":
+/*!********************************************!*\
+  !*** external "@material-ui/core/Toolbar" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/Toolbar\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/Toolbar%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/colors/green":
+/*!*************************************************!*\
+  !*** external "@material-ui/core/colors/green" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/colors/green\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/colors/green%22?");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/styles" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"@material-ui/core/styles\");\n\n//# sourceURL=webpack:///external_%22@material-ui/core/styles%22?");
 
 /***/ }),
 
@@ -344,94 +498,6 @@ eval("module.exports = require(\"cookie-parser\");\n\n//# sourceURL=webpack:///e
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
-
-/***/ }),
-
-/***/ "material-ui/AppBar":
-/*!*************************************!*\
-  !*** external "material-ui/AppBar" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/AppBar\");\n\n//# sourceURL=webpack:///external_%22material-ui/AppBar%22?");
-
-/***/ }),
-
-/***/ "material-ui/Avatar":
-/*!*************************************!*\
-  !*** external "material-ui/Avatar" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/Avatar\");\n\n//# sourceURL=webpack:///external_%22material-ui/Avatar%22?");
-
-/***/ }),
-
-/***/ "material-ui/Icon":
-/*!***********************************!*\
-  !*** external "material-ui/Icon" ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/Icon\");\n\n//# sourceURL=webpack:///external_%22material-ui/Icon%22?");
-
-/***/ }),
-
-/***/ "material-ui/List":
-/*!***********************************!*\
-  !*** external "material-ui/List" ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/List\");\n\n//# sourceURL=webpack:///external_%22material-ui/List%22?");
-
-/***/ }),
-
-/***/ "material-ui/Menu":
-/*!***********************************!*\
-  !*** external "material-ui/Menu" ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/Menu\");\n\n//# sourceURL=webpack:///external_%22material-ui/Menu%22?");
-
-/***/ }),
-
-/***/ "material-ui/Toolbar":
-/*!**************************************!*\
-  !*** external "material-ui/Toolbar" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/Toolbar\");\n\n//# sourceURL=webpack:///external_%22material-ui/Toolbar%22?");
-
-/***/ }),
-
-/***/ "material-ui/colors/green":
-/*!*******************************************!*\
-  !*** external "material-ui/colors/green" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/colors/green\");\n\n//# sourceURL=webpack:///external_%22material-ui/colors/green%22?");
-
-/***/ }),
-
-/***/ "material-ui/styles":
-/*!*************************************!*\
-  !*** external "material-ui/styles" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"material-ui/styles\");\n\n//# sourceURL=webpack:///external_%22material-ui/styles%22?");
 
 /***/ }),
 
@@ -553,6 +619,17 @@ eval("module.exports = require(\"redux\");\n\n//# sourceURL=webpack:///external_
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"redux-connect\");\n\n//# sourceURL=webpack:///external_%22redux-connect%22?");
+
+/***/ }),
+
+/***/ "redux-form":
+/*!*****************************!*\
+  !*** external "redux-form" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"redux-form\");\n\n//# sourceURL=webpack:///external_%22redux-form%22?");
 
 /***/ }),
 

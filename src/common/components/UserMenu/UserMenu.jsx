@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
-import Menu, { MenuItem } from 'material-ui/Menu';
-import { ListItemIcon, ListItemText } from 'material-ui/List';
-import Icon from 'material-ui/Icon';
+import Avatar from '@material-ui/core/Avatar';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 
 class UserMenu extends Component {
   constructor(props) {
@@ -18,7 +21,9 @@ class UserMenu extends Component {
   }
 
   _handleClick(event) {
-    this.setState({ anchorEl: event.currentTarget });
+    const { auth, openLoginForm } = this.props;
+    if (auth && auth.name) this.setState({ anchorEl: event.currentTarget });
+    else openLoginForm();
   }
 
   _handleClose() {
@@ -30,25 +35,24 @@ class UserMenu extends Component {
   }
 
   render() {
-    const { image, name } = this.props;
     const { anchorEl } = this.state;
     return (
       <div className='user-menu'>
-        <Avatar
+        <IconButton
           onClick={this._handleClick}
           className='user-menu__image'
-          alt='profile'
-          src={image}
           aria-owns={anchorEl ? 'simple-menu' : null}
           aria-haspopup='true'
-        />
+        >
+          <Icon>account_circle</Icon>
+        </IconButton>
         <Menu
           id='simple-menu'
           anchorEl={anchorEl}
           open={!!anchorEl}
           onClose={this._handleClose}
         >
-          <MenuItem disabled>{name}</MenuItem>
+          <MenuItem disabled>{''}</MenuItem>
           <MenuItem onClick={this._logOut}>
             <ListItemIcon>
               <Icon>exit_to_app</Icon>
@@ -62,8 +66,8 @@ class UserMenu extends Component {
 };
 
 UserMenu.propTypes = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  auth: PropTypes.object,
+  openLoginForm: PropTypes.func.isRequired
 };
 
 export default UserMenu;
