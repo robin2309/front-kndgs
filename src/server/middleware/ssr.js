@@ -23,7 +23,7 @@ export const middlewareSsr = async(req) => {
       reduxAsyncConnect,
       ...reducers
     }),
-    {auth: req.session},
+    {},
     applyMiddleware(thunkMiddleware)
   );
   const location = url.parse(req.url);

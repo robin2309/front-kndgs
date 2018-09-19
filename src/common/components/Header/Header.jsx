@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { withStyles } from '@material-ui/core/styles';
+import Modal from 'Ui/Modal/Modal';
 
 import {compose} from 'Utils/compose';
 import UserMenu from 'Components/UserMenu/UserMenu';
 import {showLoginForm, hideLoginForm} from 'Actions/setShowLoginForm';
+import LoginForm from 'Components/LoginForm/LoginForm';
 
 const styles = {
   logo: {
@@ -26,14 +28,22 @@ class Header extends Component {
     classes: PropTypes.object.isRequired,
     auth: PropTypes.object,
     openLoginForm: PropTypes.func.isRequired,
-    hideLoginForm: PropTypes.func.isRequired
+    hideLoginForm: PropTypes.func.isRequired,
+    showLoginForm: PropTypes.bool.isRequired
   };
 
   render() {
-    const {classes, auth, openLoginForm} = this.props;
+    const {classes, auth, openLoginForm, showLoginForm, hideLoginForm} = this.props;
 
     return (
       <div>
+        <Modal
+          open={showLoginForm}
+          onClose={hideLoginForm}
+          onEscapeKeyDown={hideLoginForm}
+        >
+          <LoginForm />
+        </Modal>
         <AppBar position='static' color='primary'>
           <Toolbar className={classes.toolbar}>
             <div>
