@@ -11,7 +11,6 @@ const styles = {
     backgroundColor: 'white',
     boxShadow: '5px 5px 5px 0px rgba(136,136,136,1)',
     padding: '15px',
-    width: '500px',
     position: 'fixed'
   },
   overlay: {

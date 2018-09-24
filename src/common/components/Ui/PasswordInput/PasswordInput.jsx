@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-const TextInput = ({input}) => {
+const PasswordInput = ({input}) => {
   const { value, onChange, name } = input;
   const upperCaseName = name.charAt(0).toUpperCase() + name.substr(1);
   return (
@@ -12,13 +12,14 @@ const TextInput = ({input}) => {
         value={value}
         onChange={onChange}
         margin='normal'
+        type='password'
         />
     </div>
   );
 };
 
-TextInput.propTypes = {
+PasswordInput.propTypes = {
   input: PropTypes.object.isRequired
 };
 
-export default TextInput;
+export default PasswordInput;

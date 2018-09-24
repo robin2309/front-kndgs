@@ -63,7 +63,8 @@ const alias = {
 	Reducers: path.resolve(__dirname, '../src/common/reducers/'),
   Actions: path.resolve(__dirname, '../src/common/actions/'),
   Layouts: path.resolve(__dirname, '../src/common/layouts/'),
-  Ui: path.resolve(__dirname, '../src/common/components/Ui')
+  Ui: path.resolve(__dirname, '../src/common/components/Ui'),
+  Services: path.resolve(__dirname, '../src/common/services')
 };
 
 const clientConfig = {

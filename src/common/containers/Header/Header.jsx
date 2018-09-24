@@ -11,6 +11,7 @@ import {compose} from 'Utils/compose';
 import UserMenu from 'Components/UserMenu/UserMenu';
 import {showLoginForm, hideLoginForm} from 'Actions/setShowLoginForm';
 import LoginForm from 'Components/LoginForm/LoginForm';
+import {loginActionCreator} from 'Actions/login';
 
 const styles = {
   logo: {
@@ -29,11 +30,12 @@ class Header extends Component {
     auth: PropTypes.object,
     openLoginForm: PropTypes.func.isRequired,
     hideLoginForm: PropTypes.func.isRequired,
-    showLoginForm: PropTypes.bool.isRequired
+    showLoginForm: PropTypes.bool.isRequired,
+    onLogin: PropTypes.func.isRequired
   };
 
   render() {
-    const {classes, auth, openLoginForm, showLoginForm, hideLoginForm} = this.props;
+    const {classes, auth, openLoginForm, showLoginForm, hideLoginForm, onLogin} = this.props;
 
     return (
       <div>
@@ -42,7 +44,7 @@ class Header extends Component {
           onClose={hideLoginForm}
           onEscapeKeyDown={hideLoginForm}
         >
-          <LoginForm />
+          <LoginForm onSubmit={onLogin} />
         </Modal>
         <AppBar position='static' color='primary'>
           <Toolbar className={classes.toolbar}>
@@ -63,7 +65,8 @@ class Header extends Component {
 
 const mapDispatchToProps = dispatch => ({
   openLoginForm: () => dispatch(showLoginForm()),
-  hideLoginForm: () => dispatch(hideLoginForm())
+  hideLoginForm: () => dispatch(hideLoginForm()),
+  onLogin: (data) => dispatch(loginActionCreator(data))
 });
 
 const mapStateToProps = state => ({

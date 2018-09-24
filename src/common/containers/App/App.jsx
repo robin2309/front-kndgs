@@ -4,7 +4,7 @@ import renderRoutes from 'react-router-config/renderRoutes';
 import { asyncConnect } from 'redux-connect';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import Header from 'Components/Header/Header';
+import Header from 'Containers/Header/Header';
 import theme from 'Layouts/theme';
 
 const App = ({ route }) => {

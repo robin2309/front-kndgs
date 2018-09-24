@@ -16,6 +16,7 @@ import layout from 'Layouts/main';
 import reducers from 'Common/reducers';
 import routes from 'Common/routes';
 import * as helpers from 'Reducers/helpers';
+import Services from 'Services';
 
 export const middlewareSsr = async(req) => {
   const store = createStore(
@@ -24,7 +25,7 @@ export const middlewareSsr = async(req) => {
       ...reducers
     }),
     {},
-    applyMiddleware(thunkMiddleware)
+    applyMiddleware(thunkMiddleware.withExtraArgument(Services))
   );
   const location = url.parse(req.url);
 

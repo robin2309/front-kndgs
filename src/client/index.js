@@ -11,6 +11,7 @@ import routes from 'Common/routes';
 import * as helpers from 'Reducers/helpers';
 import './css/includeCss';
 import { NODE_ENV } from 'Configs';
+import Services from 'Services';
 
 const logger = ({ getState }) => {
   return next => action => {
@@ -23,8 +24,8 @@ const logger = ({ getState }) => {
 };
 
 const middlewares = NODE_ENV === 'development'
-  ? [ thunkMiddleware, logger ]
-  : [ thunkMiddleware ];
+  ? [ thunkMiddleware.withExtraArgument(Services), logger ]
+  : [ thunkMiddleware.withExtraArgument(Services) ];
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
