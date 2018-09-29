@@ -42,7 +42,8 @@ const startNodemon = () => {
       DEV_SERVER: 'true',
       PORT: 3333,
       VERBOSE: 'info',
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      API_URL: 'http://localhost:3000/api/v1'
     }
   });
   nodemon.on('start', function() {

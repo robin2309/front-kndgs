@@ -117,7 +117,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar loginActionCreator = exports.loginActionCreator = function loginActionCreator(data) {\n  return function (dispatch, getState, _ref) {\n    var User = _ref.User;\n\n    console.log(User);\n    console.log(data);\n    console.log(dispatch);\n    console.log(getState());\n    console.log('mamen');\n  };\n};\n\n//# sourceURL=webpack:///./src/common/actions/login.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.loginActionCreator = undefined;\n\nvar _requestThunk = __webpack_require__(/*! Reducers/requestThunk */ \"./src/common/reducers/requestThunk.js\");\n\nvar _requestThunk2 = _interopRequireDefault(_requestThunk);\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar loginActionCreator = exports.loginActionCreator = function loginActionCreator(data) {\n  return function (dispatch, getState, _ref) {\n    var User = _ref.User;\n\n    dispatch((0, _requestThunk2.default)(_constants2.default.LOGIN_USER, User.logIn.url, User.logIn.method, null, data));\n  };\n};\n\n//# sourceURL=webpack:///./src/common/actions/login.js?");
 
 /***/ }),
 
@@ -277,15 +277,15 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/common/reducers/auth.js":
-/*!*************************************!*\
-  !*** ./src/common/reducers/auth.js ***!
-  \*************************************/
+/***/ "./src/common/reducers/defaultState.js":
+/*!*********************************************!*\
+  !*** ./src/common/reducers/defaultState.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = {};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants2.default.GET_AUTH:\n      return action.auth;\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/common/reducers/auth.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar defaultState = {\n  isPending: false,\n  isFulfilled: false,\n  isRejected: false,\n  error: null,\n  data: {}\n};\n\nexports.default = defaultState;\n\n//# sourceURL=webpack:///./src/common/reducers/defaultState.js?");
 
 /***/ }),
 
@@ -297,7 +297,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getMatchingCountryFromState = getMatchingCountryFromState;\nexports.getMatchingRetailerFromState = getMatchingRetailerFromState;\nfunction getMatchingCountryFromState(state, countryName) {\n  return state.countries.list.items.find(function (country) {\n    return country.label.toLowerCase() === countryName.toLowerCase();\n  });\n}\n\nfunction getMatchingRetailerFromState(state, encodedRetailerName) {\n  var decodedRetailerName = decodeURIComponent(encodedRetailerName);\n  return state.retailers.list.items.find(function (retailer) {\n    return retailer.name.toLowerCase() === decodedRetailerName.toLowerCase();\n  });\n}\n\n//# sourceURL=webpack:///./src/common/reducers/helpers.js?");
+eval("\n\n//# sourceURL=webpack:///./src/common/reducers/helpers.js?");
 
 /***/ }),
 
@@ -309,7 +309,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxForm = __webpack_require__(/*! redux-form */ \"redux-form\");\n\nvar _auth = __webpack_require__(/*! ./auth */ \"./src/common/reducers/auth.js\");\n\nvar _auth2 = _interopRequireDefault(_auth);\n\nvar _showLoginForm = __webpack_require__(/*! ./showLoginForm */ \"./src/common/reducers/showLoginForm.js\");\n\nvar _showLoginForm2 = _interopRequireDefault(_showLoginForm);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = {\n  auth: _auth2.default,\n  form: _reduxForm.reducer,\n  showLoginForm: _showLoginForm2.default\n};\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxForm = __webpack_require__(/*! redux-form */ \"redux-form\");\n\nvar _user = __webpack_require__(/*! ./user */ \"./src/common/reducers/user.js\");\n\nvar _user2 = _interopRequireDefault(_user);\n\nvar _showLoginForm = __webpack_require__(/*! ./showLoginForm */ \"./src/common/reducers/showLoginForm.js\");\n\nvar _showLoginForm2 = _interopRequireDefault(_showLoginForm);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar myApp = {\n  user: _user2.default,\n  form: _reduxForm.reducer,\n  showLoginForm: _showLoginForm2.default\n};\n\nexports.default = myApp;\n\n//# sourceURL=webpack:///./src/common/reducers/index.js?");
 
 /***/ }),
 
@@ -321,7 +321,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nvar _Configs = __webpack_require__(/*! Configs */ \"./src/configs.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar actionPending = function actionPending(actionName) {\n  return {\n    type: _nameHelpers2.default.pendingType(actionName),\n    payload: {}\n  };\n};\n\nvar actionRejected = function actionRejected(actionName, error) {\n  return {\n    type: _nameHelpers2.default.rejectedType(actionName),\n    payload: {\n      error: error\n    }\n  };\n};\n\nvar actionFulfilled = function actionFulfilled(actionName, items) {\n  return {\n    type: _nameHelpers2.default.fulfilledType(actionName),\n    payload: {\n      items: items\n    }\n  };\n};\n\nexports.default = function (actionName, url, method, params) {\n  return function (dispatch) {\n    dispatch(actionPending(actionName));\n\n    return (0, _axios2.default)({\n      url: _Configs.API_URL + '/' + url,\n      method: method,\n      headers: {\n        Identity: 'StoresSuperSercret'\n      }\n    }).then(function (response) {\n      return dispatch(actionFulfilled(actionName, response.data));\n    }, function (error) {\n      dispatch(actionRejected(actionName, error));\n      throw new Error(error);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/common/reducers/requestThunk.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nvar _Configs = __webpack_require__(/*! Configs */ \"./src/configs.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar actionPending = function actionPending(actionName) {\n  return {\n    type: _nameHelpers2.default.pendingType(actionName),\n    payload: {}\n  };\n};\n\nvar actionRejected = function actionRejected(actionName, error) {\n  return {\n    type: _nameHelpers2.default.rejectedType(actionName),\n    payload: {\n      error: error\n    }\n  };\n};\n\nvar actionFulfilled = function actionFulfilled(actionName, items) {\n  return {\n    type: _nameHelpers2.default.fulfilledType(actionName),\n    payload: {\n      items: items\n    }\n  };\n};\n\nexports.default = function (actionName, url, method, params, data) {\n  return function (dispatch) {\n    dispatch(actionPending(actionName));\n\n    var config = Object.assign({ url: _Configs.API_URL + '/' + url }, { method: method }, params ? { params: params } : null, data ? { data: data } : null);\n\n    console.log(config);\n\n    return (0, _axios2.default)(config).then(function (response) {\n      return dispatch(actionFulfilled(actionName, response.data));\n    }, function (error) {\n      dispatch(actionRejected(actionName, error));\n      throw new Error(error);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/common/reducers/requestThunk.js?");
 
 /***/ }),
 
@@ -334,6 +334,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialState = false;\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants2.default.SHOW_LOGIN_FORM:\n      return true;\n    case _constants2.default.HIDE_LOGIN_FORM:\n      return false;\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/common/reducers/showLoginForm.js?");
+
+/***/ }),
+
+/***/ "./src/common/reducers/user.js":
+/*!*************************************!*\
+  !*** ./src/common/reducers/user.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _handlers;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _defaultState = __webpack_require__(/*! ./defaultState */ \"./src/common/reducers/defaultState.js\");\n\nvar _defaultState2 = _interopRequireDefault(_defaultState);\n\nvar _constants = __webpack_require__(/*! Actions/constants */ \"./src/common/actions/constants.js\");\n\nvar _constants2 = _interopRequireDefault(_constants);\n\nvar _nameHelpers = __webpack_require__(/*! Actions/nameHelpers */ \"./src/common/actions/nameHelpers.js\");\n\nvar _nameHelpers2 = _interopRequireDefault(_nameHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar initialState = _extends({}, _defaultState2.default);\n\nvar handlers = (_handlers = {}, _defineProperty(_handlers, _nameHelpers2.default.pendingType(_constants2.default.LOGIN_USER), function (state, action) {\n  return _extends({}, initialState, {\n    isPending: true\n  });\n}), _defineProperty(_handlers, _nameHelpers2.default.rejectedType(_constants2.default.LOGIN_USER), function (state, action) {\n  return _extends({}, initialState, {\n    isRejected: true\n  });\n}), _defineProperty(_handlers, _nameHelpers2.default.fulfilledType(_constants2.default.LOGIN_USER), function (state, action) {\n  return _extends({}, initialState, {\n    isFulfilled: true,\n    data: action.payload.items\n  });\n}), _handlers);\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments[1];\n\n  var handler = handlers[action.type];\n  if (handler) {\n    return handler(state, action);\n  }\n  return state;\n};\n\n//# sourceURL=webpack:///./src/common/reducers/user.js?");
 
 /***/ }),
 
@@ -357,7 +369,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _requestThunk = __webpack_require__(/*! Reducers/requestThunk */ \"./src/common/reducers/requestThunk.js\");\n\nvar _requestThunk2 = _interopRequireDefault(_requestThunk);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar User = function () {\n  function User() {\n    _classCallCheck(this, User);\n\n    console.log('ce genre de user');\n  }\n\n  _createClass(User, [{\n    key: 'logIn',\n    value: function logIn(data) {\n      return (0, _requestThunk2.default)('/CONFIG');\n    }\n  }]);\n\n  return User;\n}();\n\n;\n\nexports.default = User;\n\n//# sourceURL=webpack:///./src/common/services/User.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar User = {\n  logIn: {\n    method: 'POST',\n    url: '/auth'\n  }\n};\n\nexports.default = User;\n\n//# sourceURL=webpack:///./src/common/services/User.js?");
 
 /***/ }),
 
@@ -369,7 +381,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _User = __webpack_require__(/*! ./User */ \"./src/common/services/User.js\");\n\nvar _User2 = _interopRequireDefault(_User);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = {\n  User: new _User2.default()\n};\n\n//# sourceURL=webpack:///./src/common/services/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _User = __webpack_require__(/*! ./User */ \"./src/common/services/User.js\");\n\nvar _User2 = _interopRequireDefault(_User);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = {\n  User: _User2.default\n};\n\n//# sourceURL=webpack:///./src/common/services/index.js?");
 
 /***/ }),
 
@@ -381,7 +393,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar PORT = process.env.PORT;\nvar NODE_ENV = \"development\";\nvar API_URL = \"\";\nvar DEV_SERVER = process.env.DEV_SERVER;\nvar API_HOST = process.env.API_HOST;\nvar AUTH_ENDPOINT = process.env.AUTH_ENDPOINT;\nvar AUTH_ENDPOINT_BACK = \"\";\n\nmodule.exports = {\n  PORT: PORT,\n  NODE_ENV: NODE_ENV,\n  API_URL: API_URL,\n  DEV_SERVER: DEV_SERVER,\n  API_HOST: API_HOST,\n  AUTH_ENDPOINT: AUTH_ENDPOINT,\n  AUTH_ENDPOINT_BACK: AUTH_ENDPOINT_BACK\n};\n\n//# sourceURL=webpack:///./src/configs.js?");
+eval("\n\nvar PORT = process.env.PORT;\nvar NODE_ENV = \"development\";\nvar API_URL = \"http://localhost:3000/api/v1\";\nvar DEV_SERVER = process.env.DEV_SERVER;\nvar API_HOST = process.env.API_HOST;\nvar AUTH_ENDPOINT = process.env.AUTH_ENDPOINT;\nvar AUTH_ENDPOINT_BACK = \"\";\n\nmodule.exports = {\n  PORT: PORT,\n  NODE_ENV: NODE_ENV,\n  API_URL: API_URL,\n  DEV_SERVER: DEV_SERVER,\n  API_HOST: API_HOST,\n  AUTH_ENDPOINT: AUTH_ENDPOINT,\n  AUTH_ENDPOINT_BACK: AUTH_ENDPOINT_BACK\n};\n\n//# sourceURL=webpack:///./src/configs.js?");
 
 /***/ }),
 

@@ -22,16 +22,19 @@ const actionFulfilled = (actionName, items) => ({
   }
 });
 
-export default (actionName, url, method, params) => dispatch => {
+export default (actionName, url, method, params, data) => dispatch => {
   dispatch(actionPending(actionName));
 
-  return axios({
-    url: `${API_URL}/${url}`,
-    method,
-    headers: {
-      Identity: 'StoresSuperSercret'
-    }
-  }).then(
+  const config = Object.assign(
+    {url: `${API_URL}/${url}`},
+    {method},
+    params ? {params} : null,
+    data ? {data} : null
+  );
+
+  console.log(config);
+
+  return axios(config).then(
     response => dispatch(actionFulfilled(actionName, response.data)),
     error => {
       dispatch(actionRejected(actionName, error));

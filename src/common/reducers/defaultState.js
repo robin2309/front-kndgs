@@ -3,7 +3,7 @@ const defaultState = {
   isFulfilled: false,
   isRejected: false,
   error: null,
-  items: []
+  data: {}
 };
 
 export default defaultState;
