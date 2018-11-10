@@ -27,22 +27,23 @@ const styles = {
 class Header extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    auth: PropTypes.object,
+    user: PropTypes.object,
+    onLogin: PropTypes.func.isRequired,
     openLoginForm: PropTypes.func.isRequired,
     hideLoginForm: PropTypes.func.isRequired,
-    showLoginForm: PropTypes.bool.isRequired,
-    onLogin: PropTypes.func.isRequired
+    showLoginForm: PropTypes.bool.isRequired
   };
 
   render() {
-    const {classes, auth, openLoginForm, showLoginForm, hideLoginForm, onLogin} = this.props;
-
+    const {classes, user, onLogin, hideLoginForm, showLoginForm, openLoginForm} = this.props;
+    const showModal = showLoginForm;
     return (
       <div>
         <Modal
-          open={showLoginForm}
+          open={showModal}
           onClose={hideLoginForm}
           onEscapeKeyDown={hideLoginForm}
+          onBackdropClick={hideLoginForm}
         >
           <LoginForm onSubmit={onLogin} />
         </Modal>
@@ -54,7 +55,7 @@ class Header extends Component {
               </Link>
             </div>
             <div>
-              <UserMenu auth={auth} openLoginForm={openLoginForm} />
+              <UserMenu user={user} openLoginForm={openLoginForm} />
             </div>
           </Toolbar>
         </AppBar>
@@ -70,7 +71,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  user: state.user,
   showLoginForm: state.showLoginForm
 });
 

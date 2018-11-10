@@ -22,8 +22,8 @@ const actionFulfilled = (actionName, items) => ({
   }
 });
 
-export default (actionName, url, method, params, data) => dispatch => {
-  dispatch(actionPending(actionName));
+export default (url, method, params, data) => {
+  //dispatch(actionPending(actionName));
 
   const config = Object.assign(
     {url: `${API_URL}/${url}`},
@@ -34,11 +34,11 @@ export default (actionName, url, method, params, data) => dispatch => {
 
   console.log(config);
 
-  return axios(config).then(
+  return axios(config);/*.then(
     response => dispatch(actionFulfilled(actionName, response.data)),
     error => {
       dispatch(actionRejected(actionName, error));
       throw new Error(error);
     }
-  );
+  );*/
 };

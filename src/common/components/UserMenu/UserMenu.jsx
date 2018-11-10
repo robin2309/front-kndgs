@@ -21,8 +21,8 @@ class UserMenu extends Component {
   }
 
   _handleClick(event) {
-    const { auth, openLoginForm } = this.props;
-    if (auth && auth.name) this.setState({ anchorEl: event.currentTarget });
+    const { user, openLoginForm } = this.props;
+    if ((user.data || {}).name) this.setState({ anchorEl: event.currentTarget });
     else openLoginForm();
   }
 
@@ -36,6 +36,7 @@ class UserMenu extends Component {
 
   render() {
     const { anchorEl } = this.state;
+    const { user } = this.props;
     return (
       <div className='user-menu'>
         <IconButton
@@ -52,7 +53,7 @@ class UserMenu extends Component {
           open={!!anchorEl}
           onClose={this._handleClose}
         >
-          <MenuItem disabled>{''}</MenuItem>
+          <MenuItem disabled>{user && user.data && user.data.name}</MenuItem>
           <MenuItem onClick={this._logOut}>
             <ListItemIcon>
               <Icon>exit_to_app</Icon>
@@ -66,7 +67,7 @@ class UserMenu extends Component {
 };
 
 UserMenu.propTypes = {
-  auth: PropTypes.object,
+  user: PropTypes.object,
   openLoginForm: PropTypes.func.isRequired
 };
 

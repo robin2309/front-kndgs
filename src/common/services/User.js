@@ -1,9 +1,9 @@
+import request from './request';
 
-const User = {
-  logIn: {
-    method: 'POST',
-    url: '/auth'
+class User {
+  logIn(data) {
+    return request('/auth', 'POST', null, data);
   }
-};
+}
 
 export default User;

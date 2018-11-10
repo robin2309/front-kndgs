@@ -1,8 +1,25 @@
 import React from 'react';
-import { asyncConnect } from 'redux-connect';
+import { connect } from 'react-redux';
+import {getPostsActionCreator} from 'Actions/posts';
 
-const Home = props => {
-  return <div>HOME</div>;
-};
+class Home extends React.Component {
+  componentDidMount() {
 
-export default Home;
+  }
+
+  render() {
+    return (
+      <div>HOME</div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  getPosts: dispatch(getPostsActionCreator())
+});
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

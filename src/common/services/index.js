@@ -1,5 +1,7 @@
 import User from './User';
+import Posts from './Posts';
 
 export default {
-  User
+  User: new User(),
+  Posts: new Posts()
 };
