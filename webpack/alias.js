@@ -1,6 +1,6 @@
 const path = require('path');
 
-export default {
+module.exports = {
   Common: path.resolve(__dirname, '../src/common/'),
 	Components: path.resolve(__dirname, '../src/common/components/'),
 	Containers: path.resolve(__dirname, '../src/common/containers/'),

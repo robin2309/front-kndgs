@@ -48,7 +48,7 @@ const lessExtractLoader = {
   test: /\.less$/,
   use: [
     MiniCssExtractPlugin.loader,
-    'css-loader', 
+    'css-loader',
     'less-loader'
   ]
 };
